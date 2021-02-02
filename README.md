@@ -1,10 +1,11 @@
-# BOT Chicken
-
-BOT Chicken is a CS:GO price checker that can price any CS:GO item or inventory.
+<p align="center">
+<h1> BOT Chicken </h1>
+<img src="https://ibb.co/0DWtdz4" />
+<h4>BOT Chicken is a CS:GO price checker that can price any CS:GO item or inventory.</h4>
 
 [Add this Bot](https://discord.com/oauth2/authorize?client_id=286697179949694977&scope=bot&permissions=268782656)
 [![Support Server](https://img.shields.io/discord/591914197219016707.svg?label=Discord&logo=Discord&colorB=7289da&style=for-the-badge)](https://discord.gg/BBgsdKS)
-
+</p>
 
 ### Usage
 Price checking an item
