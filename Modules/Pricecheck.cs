@@ -197,7 +197,7 @@ namespace botchicken.Modules
 
             var eb = new EmbedBuilder();
             eb.WithTitle(hash_name);
-            eb.WithDescription(Ctx.User.Mention);
+            eb.WithDescription(Ctx.User.Mention + " Currency: " + AccountHandler.accounts[Context.User.Id].currency);
             eb.WithColor(new Color(176, 195, 217));
 
             var botAuth = new EmbedAuthorBuilder();
@@ -260,6 +260,10 @@ namespace botchicken.Modules
                         {
                             item_page += "?r=hade";
                         }
+                        else if (Context.Guild.Id == 664104795367538690)
+                        {
+                            item_page += "?r=hostile";
+                        }
                         else
                         {
                             item_page += "?r=botchicken";
@@ -268,8 +272,6 @@ namespace botchicken.Modules
                         splink = "\n[**Best Deals**](" + item_page + ")";
                 }
 
-                    eb.AddField("<:botchicken:740299794550882324>  ·  Bot Suggestion", ExchangeRate.Convert(Double.Parse(ResourceLoader.trader[hash_name].csgotrader.price), AccountHandler.accounts[Context.User.Id].currency)
-                    + splink, true);
 
                 int i = 0;
                 string doppler = "";
@@ -304,11 +306,16 @@ namespace botchicken.Modules
                         }
                     }
 
-                    eb.AddField("<:botchicken:740299794550882324>  ·  Doppler Evaluation", doppler);
-                }      
+                    eb.AddField("<:botchicken:740299794550882324>  ·  Doppler Evaluation", doppler + splink);
+                }
+                else
+                {
+                    eb.AddField("<:botchicken:740299794550882324>  ·  Bot Suggestion",
+                        ExchangeRate.Convert(Double.Parse(ResourceLoader.trader[hash_name].csgotrader.price),
+                        AccountHandler.accounts[Context.User.Id].currency)
+                        + splink, true);
+                }
             }
-            
-
 
             try
             {
@@ -424,7 +431,7 @@ namespace botchicken.Modules
                 wrap = !wrap;
             }
 
-            if (ResourceLoader.trader[hash_name].csmoney != null && ResourceLoader.trader[hash_name].csmoney.price != null && Context.Guild.Id != 727970463325749268) 
+            if (ResourceLoader.trader[hash_name].csmoney != null && ResourceLoader.trader[hash_name].csmoney.price != null && Context.Guild.Id != 727970463325749268 && Context.Guild.Id != 664104795367538690)
             {
                 eb.AddField("<:csmoney:740301151303630919>  ·  CS.MONEY",
                 ExchangeRate.Convert(Double.Parse(ResourceLoader.trader[hash_name].csmoney.price), AccountHandler.accounts[Context.User.Id].currency), wrap);
@@ -453,6 +460,10 @@ namespace botchicken.Modules
             if (Context.Guild.Id == 727970463325749268)
             {
                 sp_page += "hade";
+            }
+            else if (Context.Guild.Id == 664104795367538690)
+            {
+                sp_page += "hostile";
             }
             else
             {

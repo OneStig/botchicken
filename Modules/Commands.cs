@@ -409,7 +409,7 @@ namespace botchicken.Modules
 
                     SteamQuery readu = JsonConvert.DeserializeObject<SteamQuery>(htmlu);
 
-                    string idhash = ResourceLoader.Base64Encode(steamid.ToString().Substring(8, 5)).Substring(1, 5).ToUpper();
+                    string idhash = ResourceLoader.Base64Encode(((ulong)steamid + Context.User.Id).ToString().Substring(8, 5)).Substring(1, 5).ToUpper();
 
                     var eb = new EmbedBuilder();
                     eb.WithColor(Color.Orange);

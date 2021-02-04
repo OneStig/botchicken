@@ -86,7 +86,7 @@ namespace botchicken
                 pref = prefsymbols[key];
             }
 
-            return pref + Math.Round(usd * rates[key], 2).ToString() + " " + key;
+            return pref + Math.Round(usd * rates[key], 2).ToString();
         }
 
         public static bool ValidCurr(string cur)

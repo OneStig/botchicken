@@ -103,7 +103,7 @@ namespace botchicken.Modules
 
                     //readu.response.players[0].personaname.ToLower();
 
-                    url = @"http://csgobackpack.net/api/GetInventoryValue/?key=" + ConfigLoader.cfg.csgobackpack + "&id=" + steamid + "&ref=1";
+                    url = @"http://csgobackpack.net/api/GetInventoryValue/?key=" + ConfigLoader.cfg.csgobackpack + "&id=" + steamid;
 
                     htmlu = string.Empty;
 
@@ -189,6 +189,10 @@ namespace botchicken.Modules
                         if (Context.Guild.Id == 727970463325749268)
                         {
                             item_page += "hade";
+                        }
+                        else if (Context.Guild.Id == 664104795367538690)
+                        {
+                            item_page += "hostile";
                         }
                         else
                         {
