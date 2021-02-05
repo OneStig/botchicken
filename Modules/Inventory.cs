@@ -213,7 +213,8 @@ namespace botchicken.Modules
                         var eb = new EmbedBuilder();
                         eb.WithTitle("Inventory Evaluation Failed");
                         eb.WithColor(Color.Orange);
-                        eb.AddField("Failed to get inventory value", "This may be because steam is down or the specified inventory is private");
+                        eb.AddField("Failed to get inventory value", "This may be because CS:GO inventory API is down (try again later) or the specified inventory is private"
+                            + "\nor [(refresh inventory)](https://csgobackpack.net/?nick=" + steamid + ") and try again");
                         eb.AddField("Support", "Join our [server](https://discord.gg/hh9v4eF) to report any bugs.");
                         var botAuth = new EmbedAuthorBuilder();
 
@@ -234,7 +235,8 @@ namespace botchicken.Modules
                     var eb = new EmbedBuilder();
                     eb.WithTitle("Inventory Evaluation Failed");
                     eb.WithColor(Color.Orange);
-                    eb.AddField("Failed to get inventory value", "This may be because steam is down or the specified inventory is private");
+                    eb.AddField("Failed to get inventory value", "This may be because CS:GO inventory API is down (try again later) or the specified inventory is private"
+                           + "\nor [(refresh inventory)](https://csgobackpack.net/?nick=" + steamid + ") and try again");
                     eb.AddField("Support", "Join our [server](https://discord.gg/hh9v4eF) to report any bugs.");
                     var botAuth = new EmbedAuthorBuilder();
 

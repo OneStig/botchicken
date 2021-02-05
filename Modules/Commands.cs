@@ -433,7 +433,7 @@ namespace botchicken.Modules
                     else
                     {
                         eb.AddField("Profile: " + readu.response.players[0].personaname, "If this is your account,\n Please add `" + idhash +
-                                                                                         "` to the end of your name. \n [Click here](https://steamcommunity.com/profiles/" + steamid.ToString() +
+                                                                                         "` to the end of your Steam name. \n [Click here](https://steamcommunity.com/profiles/" + steamid.ToString() +
                                                                                          "/edit) to change it, then rerun the command.");
                         eb.WithThumbnailUrl(readu.response.players[0].avatarfull);
                     }
