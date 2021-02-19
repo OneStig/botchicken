@@ -7,6 +7,9 @@ using System.Reflection;
 using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
+using DiscordBotsList.Api;
+using DiscordBotsList;
+using DiscordBotsList.Api.Objects;
 
 namespace botchicken.Services
 {
@@ -14,6 +17,7 @@ namespace botchicken.Services
     {
         DiscordSocketClient client;
         CommandService service;
+        
 
         public async Task InitHandling(DiscordSocketClient client)
         {
@@ -25,7 +29,43 @@ namespace botchicken.Services
             service = new CommandService(config);
             await service.AddModulesAsync(Assembly.GetEntryAssembly(), service as IServiceProvider);
 
+            
+            
+
             this.client.MessageReceived += (msg) => { var _ = Task.Run(() => MessageReceivedHandler(msg)); return Task.CompletedTask; };
+            this.client.JoinedGuild += (gui) => { var _ = Task.Run(() => GuildReceivedHandler(gui)); return Task.CompletedTask; };
+
+        }
+
+        private async Task GuildReceivedHandler(SocketGuild arg)
+        {
+            ulong staffid = 812138251669733416;
+            IMessageChannel stafflog = client.GetChannel(staffid) as IMessageChannel;
+
+            int actual = client.Guilds.Count();
+
+            int mems = 0;
+
+            foreach (SocketGuild server in client.Guilds)
+            {
+                mems += server.MemberCount;
+            }
+
+            var embed = new EmbedBuilder();
+            embed.WithTitle("New Guild");
+
+            if (arg.IconUrl != null)
+            {
+                embed.WithThumbnailUrl(arg.IconUrl);
+            }
+            
+            embed.WithDescription("Just joined **" + arg.Name + "**");
+            embed.AddField("Updated Stats", "Now in **" + actual.ToString() + "** servers with **" + mems.ToString() + "** members");
+
+            embed.WithColor(Color.DarkerGrey);
+
+           
+            await stafflog.SendMessageAsync("", false, embed.Build());
         }
 
         private async Task MessageReceivedHandler(SocketMessage arg)
@@ -74,16 +114,16 @@ namespace botchicken.Services
             }
         }
 
-        //const ulong serverId = 538951591483670538;
+        const ulong serverId = 538951591483670538;
 
-        //SocketGuild findServer(ulong id)
-        //{
-        //    foreach (SocketGuild server in client.Guilds)
-        //    {
-        //        if (server.Id == serverId)
-        //            return server;
-        //    }
-        //    return null;
-        //}
+        SocketGuild findServer(ulong id)
+        {
+            foreach (SocketGuild server in client.Guilds)
+            {
+                if (server.Id == serverId)
+                    return server;
+            }
+            return null;
+        }
     }
 }
